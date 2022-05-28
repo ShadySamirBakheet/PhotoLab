@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="main">#640c0b</color>
+    <color name="main">#DC3DBF</color>
     <color name="main2">#dbd1c5</color>
     <color name="main2o">#44DBD1C5</color>
     <color name="main2l">#F3F1EF</color>
@@ -22,6 +22,8 @@
     <color name="txtColor3">@color/main</color>
     <color name="txtColor4">#808080</color>
     <color name="txtColor5">#FF0000</color>
+
+    <color name="favColor">#ff0100</color>
 
     <color name="statusBarColor">@color/main</color>
     <color name="toolBarColor">@color/main2</color>

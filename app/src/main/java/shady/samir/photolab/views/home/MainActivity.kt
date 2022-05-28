@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import shady.samir.photolab.R
 import shady.samir.photolab.databinding.ActivityMainBinding
 
@@ -35,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setAnimation() {
 
-        val animation: Animation = AnimationUtils.loadAnimation(this, R.anim.in_right)
+        val animation: Animation = AnimationUtils.loadAnimation(this, R.anim.feed_in)
         animation.duration = 1000
         binding.startImg.startAnimation(animation)
     }

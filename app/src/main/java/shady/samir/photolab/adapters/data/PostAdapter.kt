@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import shady.samir.photolab.R
 
-class BuildHome2Adapter(private val context: Context?, private val isAdmin: Boolean) :
-    RecyclerView.Adapter<BuildHome2Adapter.ViewHolder>() {
+class PostAdapter(private val context: Context?) :
+    RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-    val view: View = LayoutInflater.from(context).inflate(R.layout.fragment_home, parent, false)
+    val view: View = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false)
     return ViewHolder(view)
   }
 

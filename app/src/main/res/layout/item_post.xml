@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_12sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/image_card"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        android:layout_margin="1dp"
+        android:elevation="0dp">
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/user_image"
+            android:scaleType="centerCrop" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/image_card"
+        android:layout_toStartOf="@id/dropdown_menu"
+       android:text="User Name"
+        android:paddingHorizontal="@dimen/_4sdp"
+        android:textSize="@dimen/_16ssp"
+        android:textColor="@color/txtColor1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/image_card"
+        android:layout_toStartOf="@id/dropdown_menu"
+        android:layout_below="@id/userName"
+       android:text="Status"
+        android:paddingHorizontal="@dimen/_4sdp"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/txtColor4"/>
+
+    <ImageView
+        android:id="@+id/dropdown_menu"
+        android:layout_alignParentEnd="true"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:padding="@dimen/_8sdp"
+        android:src="@drawable/ic_menu"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:id="@+id/image_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        android:paddingVertical="@dimen/_8sdp"
+        android:layout_below="@id/image_card"  >
+
+        <ImageView
+            android:id="@+id/postImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|center"
+        android:layout_below="@id/image_container">
+
+        <ImageView
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/ic_favorite_out"
+            app:tint="@color/txtColor4" />
+
+        <ImageView
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/ic_comment"
+            app:tint="@color/txtColor4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="150 Comments"
+            android:paddingHorizontal="@dimen/_4sdp"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/txtColor4"/>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
