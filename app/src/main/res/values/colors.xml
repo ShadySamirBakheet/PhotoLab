@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="main">#640c0b</color>
+    <color name="main2">#dbd1c5</color>
+    <color name="main2o">#44DBD1C5</color>
+    <color name="main2l">#F3F1EF</color>
+
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="black">#FF000000</color>
+
+    <color name="inputColor">@color/main2</color>
+
+    <!--App Color-->
+    <color name="btnColor1">@color/main</color>
+    <color name="btnColor2">#ffffff</color>
+    <color name="btnColor3">#B1B0B0</color>
+    <color name="btnColor4">#2F3133</color>
+
+    <color name="txtColor1">#FF000000</color>
+    <color name="txtColor2">#FFFFFFFF</color>
+    <color name="txtColor3">@color/main</color>
+    <color name="txtColor4">#808080</color>
+    <color name="txtColor5">#FF0000</color>
+
+    <color name="statusBarColor">@color/main</color>
+    <color name="toolBarColor">@color/main2</color>
+    <color name="bottomBar">@color/main2</color>
+
+    <color name="progressColor1">#299000</color>
+    <color name="progressColor2">#223c8c</color>
+
+    <color name="boxColor">#0094FF</color>
+    <color name="cardBackgroundColor">#FAF9F8</color>
+
+    <color name="background">@color/main2l</color>
+
+</resources>
