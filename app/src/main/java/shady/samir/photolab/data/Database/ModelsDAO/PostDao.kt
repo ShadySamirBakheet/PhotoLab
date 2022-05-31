@@ -1,12 +1,11 @@
 package shady.samir.photolab.data.Database.ModelsDAO
 
 import androidx.lifecycle.LiveData
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import shady.samir.photolab.data.Database.Models.PostDB
 import shady.samir.photolab.data.Database.Models.User
 
+@Dao
 interface PostDao {
 
     @Query("SELECT * FROM postdb")
