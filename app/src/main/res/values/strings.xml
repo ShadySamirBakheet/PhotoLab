@@ -4,4 +4,21 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account">"Already have an account, "</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="article_title">Article Title ....</string>
+    <string name="admin">Admin</string>
+    <string name="checkYouEmial">Check Your Email For Rest Password Link</string>
+    <string name="ok">OK</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="saeEdit">Save Edit</string>
+    <string name="changePassword">Change Password</string>
 </resources>

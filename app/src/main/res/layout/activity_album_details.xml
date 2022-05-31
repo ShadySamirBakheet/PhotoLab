@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.home.ui.FavoritesFragment">
+    tools:context=".views.album.AlbumDetailsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="Favorites" />
+                android:text="Album Name" />
 
             <ImageView
                 android:id="@+id/goBack"
@@ -37,11 +37,11 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favList"
+        android:id="@+id/albumsList"
         android:padding="@dimen/_8sdp"
         android:layout_below="@id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_post"/>
+        tools:listitem="@layout/item_album_image"/>
 
 </RelativeLayout>

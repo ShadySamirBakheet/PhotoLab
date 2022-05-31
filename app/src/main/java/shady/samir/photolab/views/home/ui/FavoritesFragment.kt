@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import shady.samir.photolab.adapters.data.PostAdapter
 import shady.samir.photolab.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {
@@ -23,6 +25,12 @@ class FavoritesFragment : Fragment() {
 
         _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        binding.favList.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            adapter = PostAdapter(context)
+        }
 
         return root
     }

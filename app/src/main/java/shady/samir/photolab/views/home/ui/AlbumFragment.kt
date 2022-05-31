@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import shady.samir.photolab.adapters.data.AlbumAdapter
+import shady.samir.photolab.adapters.data.PostAdapter
 import shady.samir.photolab.databinding.FragmentAlbumBinding
 
 class AlbumFragment : Fragment() {
@@ -25,7 +29,11 @@ class AlbumFragment : Fragment() {
 
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        binding.albumsList.apply {
+            setHasFixedSize(true)
+            layoutManager = GridLayoutManager(context, 2)
+            adapter = AlbumAdapter(context)
+        }
         return root
     }
 
