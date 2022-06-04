@@ -11,7 +11,7 @@ import shady.samir.photolab.data.Model.Post
 class PostRepository(private val postDao: PostDao, private  val retService: RetrofitServices) {
 
 
-    suspend fun posts(): Response<List<Post>> {
+    suspend fun posts(): Response<ArrayList<Post>> {
 
         return  retService.posts()
     }
@@ -21,7 +21,7 @@ class PostRepository(private val postDao: PostDao, private  val retService: Retr
         return  retService.post(id)
     }
 
-    suspend fun postComments(id:Int): Response<List<Comment>> {
+    suspend fun postComments(id:Int): Response<ArrayList<Comment>> {
 
         return  retService.postComments(id)
     }

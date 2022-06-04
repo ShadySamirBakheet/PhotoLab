@@ -1,4 +1,4 @@
 package shady.samir.photolab.utils
 
 
-data class ResultApi(val isSuccess:Boolean, val msg:String, val data : Any?)
+data class ResultApi<T>(val isSuccess:Boolean,val data : T?)

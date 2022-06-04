@@ -8,7 +8,7 @@ import shady.samir.photolab.data.Database.Models.User
 @Dao
 interface PostDao {
 
-    @Query("SELECT * FROM postdb")
+    @Query("SELECT * FROM PostDB")
     fun getAll(): LiveData<List<PostDB>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

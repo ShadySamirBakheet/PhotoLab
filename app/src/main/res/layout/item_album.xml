@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="@dimen/_6sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentPadding="@dimen/_6sdp"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_4sdp"
     android:orientation="vertical">
 
     <ImageView
@@ -10,11 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
         android:scaleType="centerCrop"
+        android:visibility="gone"
         android:src="@drawable/image1" />
 
 
     <TextView
-        android:id="@+id/userName"
+        android:id="@+id/itemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Album Name"
@@ -26,9 +29,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="150"
+        android:visibility="gone"
         android:paddingHorizontal="@dimen/_4sdp"
         android:textSize="@dimen/_12ssp"
         android:textColor="@color/txtColor4"/>
 
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

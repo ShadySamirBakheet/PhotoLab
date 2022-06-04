@@ -1,15 +1,15 @@
 package shady.samir.photolab.adapters.data
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import shady.samir.photolab.R
-import shady.samir.photolab.views.post.PostDetailsActivity
+import shady.samir.photolab.data.Model.Comment
 
-class CommentAdapter (private val context: Context?) :
+class CommentAdapter(private val context: Context?) :
     RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -17,29 +17,32 @@ class CommentAdapter (private val context: Context?) :
         return ViewHolder(view)
     }
 
+    var data: List<Comment>? = null
+    var size = 0
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        holder.itemView.apply {
-
+        val item = data?.get(position)
+        holder.apply {
+            comment.text = item?.body
+            name.text = item?.name
         }
     }
 
-    private var onItemClickListener: ((String) -> Unit)? = null
-
-    fun setOnItemClickListener(listener: (String) -> Unit) {
-        onItemClickListener = listener
-    }
-
-
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//    var itemName: TextView = itemView.findViewById(R.id.itemName)
-//    var itemDesc: TextView = itemView.findViewById(R.id.itemDesc)
+        var name: TextView = itemView.findViewById(R.id.name)
+        var comment: TextView = itemView.findViewById(R.id.comment)
 //    var itemPrice: TextView = itemView.findViewById(R.id.itemPrice)
 //    var image: ImageView = itemView.findViewById(R.id.image)
 //    var editItem: ImageView = itemView.findViewById(R.id.editItem)
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return size
+    }
+
+    fun addData(data: List<Comment>?) {
+        this.data = data
+        size = data?.size ?: 0
+        notifyDataSetChanged()
     }
 }

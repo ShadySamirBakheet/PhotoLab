@@ -26,23 +26,23 @@
         android:id="@+id/userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/image_card"
         android:layout_toStartOf="@id/dropdown_menu"
-       android:text="User Name"
+        android:layout_toEndOf="@id/image_card"
         android:paddingHorizontal="@dimen/_4sdp"
-        android:textSize="@dimen/_16ssp"
-        android:textColor="@color/txtColor1"/>
+        android:text="User Name"
+        android:textColor="@color/txtColor1"
+        android:textSize="@dimen/_16ssp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/image_card"
-        android:layout_toStartOf="@id/dropdown_menu"
         android:layout_below="@id/userName"
-       android:text="Status"
+        android:layout_toStartOf="@id/dropdown_menu"
+        android:layout_toEndOf="@id/image_card"
         android:paddingHorizontal="@dimen/_4sdp"
-        android:textSize="@dimen/_12ssp"
-        android:textColor="@color/txtColor4"/>
+        android:text="Status"
+        android:textColor="@color/txtColor4"
+        android:textSize="@dimen/_12ssp" />
 
     <ImageView
         android:id="@+id/dropdown_menu"
@@ -56,16 +56,41 @@
     <LinearLayout
         android:id="@+id/image_container"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_250sdp"
-        android:paddingVertical="@dimen/_8sdp"
-        android:layout_below="@id/image_card"  >
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_card"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/_8sdp">
+
+        <TextView
+            android:id="@+id/postTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/dropdown_menu"
+            android:layout_toEndOf="@id/image_card"
+            android:paddingHorizontal="@dimen/_4sdp"
+            android:text="User Name"
+            android:textColor="@color/txtColor1"
+            android:textSize="@dimen/_16ssp" />
+
+        <TextView
+            android:id="@+id/postBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userName"
+            android:layout_toStartOf="@id/dropdown_menu"
+            android:layout_toEndOf="@id/image_card"
+            android:paddingHorizontal="@dimen/_4sdp"
+            android:text="Status"
+            android:textColor="@color/txtColor4"
+            android:textSize="@dimen/_14ssp" />
 
         <ImageView
             android:id="@+id/postImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/image1"/>
+            android:src="@drawable/image1"
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -76,11 +101,12 @@
         android:layout_below="@id/image_container">
 
         <ImageView
+            android:id="@+id/addFav"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
             android:padding="@dimen/_2sdp"
             android:src="@drawable/ic_favorite_out"
-            app:tint="@color/txtColor4" />
+            android:clickable="true" />
 
         <ImageView
             android:layout_width="@dimen/_24sdp"

@@ -7,7 +7,7 @@ import shady.samir.photolab.data.Model.Comment
 
 class AlbumRepository(private val retService: RetrofitServices) {
 
-    suspend fun albums(): Response<List<Album>> {
+    suspend fun albums(): Response<ArrayList<Album>> {
         return retService.albums()
     }
 
@@ -15,7 +15,7 @@ class AlbumRepository(private val retService: RetrofitServices) {
         return retService.album(id)
     }
 
-    suspend fun postComments(id: Int): Response<List<Comment>> {
+    suspend fun postComments(id: Int): Response<ArrayList<Comment>> {
         return retService.postComments(id)
     }
 }
