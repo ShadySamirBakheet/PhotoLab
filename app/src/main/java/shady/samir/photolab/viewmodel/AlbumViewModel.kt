@@ -4,9 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import shady.samir.photolab.data.Apis.Data.RetrofitInstance
 import shady.samir.photolab.data.Apis.Data.RetrofitServices
 import shady.samir.photolab.data.Database.Database.DataBase
+import shady.samir.photolab.data.Database.Models.PhotoDB
+import shady.samir.photolab.data.Database.Models.PostDB
 import shady.samir.photolab.data.Model.Album
 import shady.samir.photolab.data.Model.Photo
 import shady.samir.photolab.data.Model.Post
@@ -19,11 +23,23 @@ class AlbumViewModel  (application: Application): AndroidViewModel(application) 
     var albumRepository:AlbumRepository
 
     init {
+        val dataBase = DataBase.getDatabase(application.applicationContext)
+        val photoDao = dataBase.photoDao()
         retService = RetrofitInstance
             .getRetrofitInstance()
             .create(RetrofitServices::class.java)
-        albumRepository = AlbumRepository( retService)
+        albumRepository = AlbumRepository( retService,photoDao)
     }
+
+    fun addPhoto(photo: PhotoDB) = viewModelScope.launch {
+        albumRepository.addPhoto(photo)
+    }
+
+    fun deleteAll() = viewModelScope.launch {
+        albumRepository.deleteAll()
+    }
+
+    fun getAllFavPhotos() = albumRepository.getAll()
 
 
     fun albums(): LiveData<ResultApi<ArrayList<Album>>> {

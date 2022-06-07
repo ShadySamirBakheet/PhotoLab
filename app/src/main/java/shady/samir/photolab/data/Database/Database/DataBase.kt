@@ -4,18 +4,21 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import shady.samir.photolab.data.Database.Models.PhotoDB
 import shady.samir.photolab.data.Database.Models.PostDB
 import shady.samir.photolab.data.Database.Models.User
+import shady.samir.photolab.data.Database.ModelsDAO.PhotoDao
 import shady.samir.photolab.data.Database.ModelsDAO.PostDao
 import shady.samir.photolab.data.Database.ModelsDAO.UserDao
 
-@Database(entities = [User::class,PostDB::class], version = 1)
+@Database(entities = [User::class,PostDB::class,PhotoDB::class], version = 1)
 
 abstract class DataBase: RoomDatabase() {
 
 
     abstract fun userDao(): UserDao
     abstract fun postDao(): PostDao
+    abstract fun photoDao(): PhotoDao
 
     companion object {
         @Volatile

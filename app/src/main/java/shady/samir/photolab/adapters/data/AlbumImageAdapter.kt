@@ -2,22 +2,26 @@ package shady.samir.photolab.adapters.data
 
 import android.content.Context
 import android.content.Intent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import shady.samir.photolab.R
+import shady.samir.photolab.data.Database.Models.PhotoDB
+import shady.samir.photolab.data.Database.Models.PostDB
 import shady.samir.photolab.data.Model.Photo
+import shady.samir.photolab.data.Model.Post
+import shady.samir.photolab.utils.Methods
 import shady.samir.photolab.views.album.ImageDetailsActivity
 
 
-class AlbumImageAdapter(private val context: Context?) :
+class AlbumImageAdapter(private val context: Context?, private val isFav :Boolean) :
     RecyclerView.Adapter<AlbumImageAdapter.ViewHolder>() {
 
     var data: ArrayList<Photo>? = null
+    var favs: List<PhotoDB>? = null
+
     var size = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,6 +37,27 @@ class AlbumImageAdapter(private val context: Context?) :
             if (context != null) {
                 Glide.with(context).load(item?.url?:item?.thumbnailUrl).placeholder(R.drawable.image2).into(image)
             }
+
+            if (isFav || getIsFav(item!!.id)){
+                addFav.setImageResource(R.drawable.ic_favorite)
+            }else{
+                addFav.setImageResource(R.drawable.ic_favorite_out)
+            }
+
+
+            addFav.setOnClickListener {
+                Methods.printMSG("on add click")
+                onItemLovedListener.let {
+                    if (it != null) {
+                        Methods.printMSG("on add click $item")
+                        if (item != null) {
+                            it(item)
+                        }
+                    }
+                }
+            }
+
+
             itemView.setOnClickListener {
                 if (context != null) {
                     context.startActivity(Intent(context, ImageDetailsActivity::class.java).putExtra("url",item?.url).putExtra("title",item?.title),)
@@ -42,19 +67,28 @@ class AlbumImageAdapter(private val context: Context?) :
 
     }
 
-    private var onItemClickListener: ((String) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (String) -> Unit) {
-        onItemClickListener = listener
+    private fun getIsFav(id: Int): Boolean {
+        favs?.forEach {
+            if (it.id == id){
+                return true
+            }
+        }
+        return false
+    }
+
+
+    private var onItemLovedListener: ((Photo) -> Unit)? = null
+
+    fun setOnItemLovedListener(listener: (Photo) -> Unit) {
+        onItemLovedListener = listener
     }
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //    var itemName: TextView = itemView.findViewById(R.id.itemName)
-//    var itemDesc: TextView = itemView.findViewById(R.id.itemDesc)
         var title: TextView = itemView.findViewById(R.id.title)
         var image: ImageView = itemView.findViewById(R.id.image)
-//    var editItem: ImageView = itemView.findViewById(R.id.editItem)
+        var addFav: ImageView = itemView.findViewById(R.id.addFav)
     }
 
     override fun getItemCount(): Int {
@@ -62,9 +96,22 @@ class AlbumImageAdapter(private val context: Context?) :
     }
 
 
-    fun addData(data: ArrayList<Photo>?) {
+    fun addData(data: ArrayList<Photo>?, loacl: List<PhotoDB>) {
         this.data = data
+        favs= loacl
         size = data?.size ?: 0
+        notifyDataSetChanged()
+    }
+
+    fun addDataDB(listData: List<PhotoDB>) {
+        data = ArrayList()
+        if (listData != null) {
+            listData.forEach {
+                data!!.add(Photo(it.albumId,it.id,it.thumbnailUrl,it.title,it.url))
+            }
+        }
+        this.data = data
+        size = this.data?.size?:0
         notifyDataSetChanged()
     }
 }

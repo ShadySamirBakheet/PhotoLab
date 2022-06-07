@@ -1,12 +1,12 @@
 package shady.samir.photolab.views.album
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import shady.samir.photolab.R
 import shady.samir.photolab.adapters.data.AlbumImageAdapter
+import shady.samir.photolab.data.Database.Models.PhotoDB
 import shady.samir.photolab.databinding.ActivityAlbumDetailsBinding
 import shady.samir.photolab.viewmodel.AlbumViewModel
 import shady.samir.photolab.viewmodel.NetworkViewModel
@@ -19,8 +19,8 @@ class AlbumDetailsActivity : AppCompatActivity() {
     lateinit var networkViewModel: NetworkViewModel
     lateinit var albumImageAdapter: AlbumImageAdapter
 
-    var itemId =0
-    var itemName =""
+    var itemId = 0
+    var itemName = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,18 +36,23 @@ class AlbumDetailsActivity : AppCompatActivity() {
         albumViewModel = ViewModelProvider(this).get(AlbumViewModel::class.java)
         networkViewModel = ViewModelProvider(this).get(NetworkViewModel::class.java)
 
-        itemId = intent.getIntExtra("itemId",0)
+        itemId = intent.getIntExtra("itemId", 0)
         itemName = intent.getStringExtra("itemName").toString()
 
-        binding.title.text=itemName
+        binding.title.text = itemName
 
-albumImageAdapter=AlbumImageAdapter(this)
+        albumImageAdapter = AlbumImageAdapter(this, false)
         binding.albumsList.apply {
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(context, 2)
             adapter = albumImageAdapter
         }
-getData()
+
+        albumImageAdapter.setOnItemLovedListener {
+            albumViewModel.addPhoto(PhotoDB(it.id,it.albumId,it.thumbnailUrl,it.title,it.url))
+        }
+
+        getData()
     }
 
 
@@ -59,9 +64,11 @@ getData()
                 albumViewModel.albumsPhotos(itemId).observe(this) {
                     binding.progress.visibility = View.GONE
                     if (it.isSuccess) {
-                        albumImageAdapter.addData(it.data)
-                        binding.albumsList.visibility = View.VISIBLE
-                        binding.empty.visibility = View.GONE
+                        albumViewModel.getAllFavPhotos().observe(this){ loacl->
+                            albumImageAdapter.addData(it.data,loacl)
+                            binding.albumsList.visibility = View.VISIBLE
+                            binding.empty.visibility = View.GONE
+                        }
 
                     } else {
                         binding.empty.visibility = View.VISIBLE

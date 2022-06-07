@@ -36,13 +36,31 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favList"
-        android:padding="@dimen/_8sdp"
+    <ScrollView
         android:layout_below="@id/toolBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_post"/>
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favPhotos"
+                android:padding="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_album_image"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favList"
+                android:layout_below="@id/favPhotos"
+                android:padding="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_post"/>
+
+        </RelativeLayout>
+    </ScrollView>
 
     <ProgressBar
         android:id="@+id/progress"
